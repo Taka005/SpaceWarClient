@@ -1,11 +1,5 @@
 import Client from "./Client";
 
-const ws = new WebSocket("ws://localhost:6000");
+const canvas = document.getElementById("game");
 
-ws.addEventListener("open",()=>{
-  console.log("接続しました");
-});
-
-ws.addEventListener("close",()=>{
-  console.log("切断されました");
-});
+new Client(canvas);
