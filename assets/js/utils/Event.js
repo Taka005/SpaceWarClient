@@ -1,0 +1,22 @@
+export default {
+  ConnectionReady: "connectionReady",
+  HeartBeat: "heartBeat",
+  SessionReady: "sessionReady",
+  SessionFind: "sessionFind",
+  GameReady: "gameReady",
+  GameStart: "gameStart",
+  GameEnd: "gameEnd",
+  SessionEnd: "sessionEnd",
+  Error: "error",
+  Message: "message",
+  Command: "command",
+  UnitPosition: "unitPosition",
+  TeamUnitPosition: "teamUnitPosition",
+  EnemyUnitPosition: "enemyUnitPosition",
+  ControlUnit: "controlUnit",
+  SeparateUnit: "separateUnit",
+  MergeUnit: "mergeUnit",
+  TargetPosition: "targetPosition",
+  BulletPosition: "bulletPosition",
+  Attack: "attack"
+}
