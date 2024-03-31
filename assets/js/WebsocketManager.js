@@ -14,7 +14,7 @@ export default class WebSocketManager{
   }
 
   connect(){
-    this.ws = new WebSocket(config.url);
+    this.ws = new WebSocket(config.ws);
 
     this.ws.addEventListener("open",()=>{
       console.log("WebSocket Open");

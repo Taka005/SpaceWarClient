@@ -1,4 +1,5 @@
 export default {
-  url: "wss://localhost:3000",
+  host: "https://taka005.github.io/SpaceWarClient",
+  ws: "wss://localhost:3000",
   fps: 60
 }
