@@ -1,11 +1,11 @@
-import Base from "./Base";
+import Base from "./Base.js";
 
 export default class Title extends Base{
   constructor(){
     super();
 
     this.img = new Image();
-    this.img.src = "../../img/title";
+    this.img.src = "../../img/title.png";
   }
 
   draw(ctx){
