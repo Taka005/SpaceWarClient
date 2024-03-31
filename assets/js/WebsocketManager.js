@@ -1,6 +1,6 @@
-import config from "./config";
-import parse from "./utils/parse";
-import Event from "./utils/Event";
+import config from "./config.js";
+import parse from "./utils/parse.js";
+import Event from "./utils/Event.js";
 
 export default class WebSocketManager{
   constructor(){

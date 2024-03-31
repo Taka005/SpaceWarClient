@@ -1,5 +1,5 @@
-import Title from "./pages/Title";
-import config from "./config";
+import Title from "./pages/Title.js";
+import config from "./config.js";
 
 export default class Render{
   constructor(canvas){

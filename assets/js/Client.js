@@ -1,5 +1,5 @@
-import WebSocketManager from "./WebsocketManager";
-import Render from "./Render";
+import WebSocketManager from "./WebsocketManager.js";
+import Render from "./Render.js";
 
 export default class Client{
   constructor(canvas){
