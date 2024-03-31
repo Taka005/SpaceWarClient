@@ -24,6 +24,6 @@ export default class Render{
   }
 
   getPage(name){
-    this.pages.find(page=>page.constructor.name === name);
+    return this.pages.find(page=>page.constructor.name === name);
   }
 }
