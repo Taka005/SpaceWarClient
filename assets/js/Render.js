@@ -1,4 +1,5 @@
 import Title from "./pages/Title.js";
+import Matching from "./pages/Matching.js";
 import NoResponse from "./pages/NoResponse.js";
 import config from "./config.js";
 
@@ -9,6 +10,7 @@ export default class Render{
 
     this.pages = [
       new Title(),
+      new Matching(),
       new NoResponse()
     ]
 

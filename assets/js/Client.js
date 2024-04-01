@@ -6,7 +6,7 @@ import Status from "./utils/Status.js";
 export default class Client{
   constructor(canvas){
     this.canvas = canvas;
-    this.ws = new WebSocketManager();
+    this.ws = new WebSocketManager(this);
     this.render = new Render(this.canvas);
 
     this.render.getPage("Title").setDisplay(true);
@@ -28,6 +28,8 @@ export default class Client{
         this.ws.send({
           type: Event.SessionReady
         });
+
+        this.render.getPage("Matching").setDisplay(true);
 
         this.setStatus("Matching");
       }else{
