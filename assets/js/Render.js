@@ -1,6 +1,8 @@
 import Title from "./pages/Title.js";
 import Matching from "./pages/Matching.js";
 import NoResponse from "./pages/NoResponse.js";
+import Help from "./components/Help.js";
+import Message from "./components/Message.js";
 import config from "./config.js";
 
 export default class Render{
@@ -14,6 +16,10 @@ export default class Render{
       new NoResponse()
     ]
 
+    this.components = [
+      new Help()
+    ]
+
     setInterval(()=>{
       this.update();
     },1000/config.fps);
@@ -24,6 +30,10 @@ export default class Render{
 
     this.pages.forEach(page=>{
       page.draw(this.ctx);
+    });
+
+    this.components.forEach(component=>{
+      component.draw(this.ctx);
     });
   }
 

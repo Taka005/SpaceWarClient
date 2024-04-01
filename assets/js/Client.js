@@ -1,13 +1,15 @@
 import WebSocketManager from "./WebsocketManager.js";
 import Render from "./Render.js";
+import Game from "./Game.js";
 import Event from "./utils/Event.js";
 import Status from "./utils/Status.js";
 
 export default class Client{
   constructor(canvas){
     this.canvas = canvas;
-    this.ws = new WebSocketManager(this);
     this.render = new Render(this.canvas);
+    this.game = new Game(this.render);
+    this.ws = new WebSocketManager(this.game);
 
     this.render.getPage("Title").setDisplay(true);
 
@@ -20,7 +22,7 @@ export default class Client{
     this.status = Status[type];
   }
 
-  key(event){
+  keyDown(event){
     if(this.status === Status.TitlePage){
       this.render.getPage("Title").setDisplay(false);
 

@@ -3,10 +3,10 @@ import parse from "./utils/parse.js";
 import Event from "./utils/Event.js";
 
 export default class WebSocketManager{
-  constructor(client){
+  constructor(game){
     this.connect();
 
-    this.client = client;
+    this.game = game;
     this.ready = false;
 
     setInterval(()=>{
@@ -46,7 +46,9 @@ export default class WebSocketManager{
       if(data.event === Event.ConnectionReady){
         this.ready = true;
 
-        this.client.playerId = data.playerId;
+        this.game.playerId = data.playerId;
+      }else if(data.event === Event.SessionFind){
+        this.game.sessionId = data.sessionId;
       }
     });
   }

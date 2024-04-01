@@ -7,5 +7,5 @@ const client = new Client(canvas);
 document.addEventListener("keydown",(event)=>{
   event.preventDefault();
 
-  client.key(event);
+  client.keyDown(event);
 });
