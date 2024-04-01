@@ -1,4 +1,5 @@
 import Title from "./pages/Title.js";
+import NoResponse from "./pages/NoResponse.js";
 import config from "./config.js";
 
 export default class Render{
@@ -7,7 +8,8 @@ export default class Render{
     this.ctx = this.canvas.getContext("2d");
 
     this.pages = [
-      new Title()
+      new Title(),
+      new NoResponse()
     ]
 
     setInterval(()=>{

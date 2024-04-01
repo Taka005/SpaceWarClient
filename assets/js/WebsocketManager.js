@@ -6,6 +6,8 @@ export default class WebSocketManager{
   constructor(){
     this.connect();
 
+    this.ready = false;
+
     setInterval(()=>{
       this.send({
         type: Event.HeartBeat
@@ -23,6 +25,8 @@ export default class WebSocketManager{
     this.ws.addEventListener("close",()=>{
       console.log("WebSocket Close");
 
+      this.ready = false;
+
       setTimeout(()=>{
         this.connect();
       },1000);
@@ -38,11 +42,14 @@ export default class WebSocketManager{
 
       console.log(`WebSocket Data: ${JSON.stringify(data)}`);
 
+      if(data.event === Event.ConnectionReady){
+        this.ready = true;
+      }
     });
   }
 
   send(data){
-    if(this.ws.readyState !== 1) return;
+    if(!this.ready) return;
 
     this.ws.send(JSON.stringify(data));
   }
