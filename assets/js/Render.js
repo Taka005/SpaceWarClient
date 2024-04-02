@@ -17,7 +17,8 @@ export default class Render{
     ]
 
     this.components = [
-      new Help()
+      new Help(),
+      new Message()
     ]
 
     setInterval(()=>{

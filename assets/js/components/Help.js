@@ -1,4 +1,4 @@
-import Base from "./Base";
+import Base from "./Base.js";
 
 export default class Help extends Base{
   constructor(){
@@ -6,6 +6,6 @@ export default class Help extends Base{
   }
 
   draw(ctx){
-    
+
   }
 }

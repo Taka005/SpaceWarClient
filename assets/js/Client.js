@@ -37,6 +37,10 @@ export default class Client{
       }else{
         this.render.getPage("NoResponse").setDisplay(true);
       }
+    }else if(this.status === Status.Readying){
+
+    }else if(this.status === Status.Playing){
+      
     }
   }
 }
