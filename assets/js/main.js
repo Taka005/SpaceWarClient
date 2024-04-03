@@ -9,3 +9,9 @@ document.addEventListener("keydown",(event)=>{
 
   client.keyDown(event);
 });
+
+document.addEventListener("keyUp",(event)=>{
+  event.preventDefault();
+
+  client.keyUp(event);
+});

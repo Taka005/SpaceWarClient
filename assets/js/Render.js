@@ -41,4 +41,8 @@ export default class Render{
   getPage(name){
     return this.pages.find(page=>page.constructor.name === name);
   }
+
+  getComponent(name){
+    return this.components.find(component=>component.constructor.name === name);
+  }
 }

@@ -23,7 +23,11 @@ export default class Client{
   }
 
   keyDown(event){
-    if(this.status === Status.TitlePage){
+    if(event.code === "KeyH"){
+      this.render.getComponent("Help")
+        .setPos(this.canvas.width/4,this.canvas.height/4)
+        .setDisplay(true);
+    }else if(this.status === Status.TitlePage){
       this.render.getPage("Title").setDisplay(false);
 
       if(this.ws.ready){
@@ -40,7 +44,13 @@ export default class Client{
     }else if(this.status === Status.Readying){
 
     }else if(this.status === Status.Playing){
-      
+
+    }
+  }
+
+  keyUp(event){
+    if(event.code === "KeyH"){
+      this.render.getComponent("Help").setDisplay(false);
     }
   }
 }
