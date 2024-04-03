@@ -1,10 +1,16 @@
 import Event from "./utils/Event.js";
 
 export default class Game{
-  constructor(render){
+  constructor(client,render){
+    this.client = client;
     this.render = render;
 
     this.reset();
+  }
+
+  join(sessionId){
+    this.sessionId = sessionId;
+    this.client.setStatus("Readying");
   }
 
   event(data){

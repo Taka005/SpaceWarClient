@@ -8,7 +8,7 @@ export default class Client{
   constructor(canvas){
     this.canvas = canvas;
     this.render = new Render(this.canvas);
-    this.game = new Game(this.render);
+    this.game = new Game(this,this.render);
     this.ws = new WebSocketManager(this.game);
 
     this.render.getPage("Title").setDisplay(true);

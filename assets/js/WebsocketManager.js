@@ -48,7 +48,11 @@ export default class WebSocketManager{
 
         this.game.playerId = data.playerId;
       }else if(data.event === Event.SessionFind){
-        this.game.sessionId = data.sessionId;
+        this.game.join(data.sessionId);
+      }else{
+        if(this.game.sessionId){
+          this.game.event(data);
+        }
       }
     });
   }
