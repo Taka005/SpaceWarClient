@@ -10,7 +10,7 @@ document.addEventListener("keydown",(event)=>{
   client.keyDown(event);
 });
 
-document.addEventListener("keyUp",(event)=>{
+document.addEventListener("keyup",(event)=>{
   event.preventDefault();
 
   client.keyUp(event);
