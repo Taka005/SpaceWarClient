@@ -26,6 +26,8 @@ export default class Message extends Base{
   }
 
   draw(ctx){
+    if(!this.isDisplay) return
+
     ctx.font = this.font;
     ctx.fillStyle = this.color;
     ctx.fillText(this.text,this.posX,this.posY);

@@ -46,7 +46,7 @@ export default class Client{
         this.render.message("error")
           .setPos(100,500)
           .setColor("red")
-          .setText("サーバーが応答していません")
+          .setText("サーバーが応答していません");
       }
     }else if(this.status === Status.Readying){
 

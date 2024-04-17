@@ -12,7 +12,8 @@ export default class Render extends RenderManager{
   }
 
   message(name){
-    return this.add(name,new Message());
+    return this.add(name,new Message())
+      .setDisplay(true);
   }
 
   title(){
