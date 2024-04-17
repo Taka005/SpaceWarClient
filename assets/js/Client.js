@@ -7,8 +7,7 @@ import Status from "./utils/Status.js";
 
 export default class Client{
   constructor(canvas){
-    this.canvas = canvas;
-    this.render = new Render(this.canvas);
+    this.render = new Render(canvas);
     this.game = new Game(this,this.render);
     this.ws = new WebSocketManager(this.game);
 
