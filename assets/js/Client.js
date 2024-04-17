@@ -1,6 +1,7 @@
 import WebSocketManager from "./WebsocketManager.js";
 import Render from "./Render.js";
 import Game from "./Game.js";
+import config from "./config.js";
 import Event from "./utils/Event.js";
 import Status from "./utils/Status.js";
 
