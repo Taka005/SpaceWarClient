@@ -1,10 +1,11 @@
 export default class Base{
   constructor(){
-    this.display = false;
+    this.type = "page";
+    this.isDisplay = false;
   }
 
   setDisplay(bool){
-    this.display = bool;
+    this.isDisplay = bool;
 
     return this;
   }

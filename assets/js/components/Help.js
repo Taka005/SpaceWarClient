@@ -2,6 +2,8 @@ import Base from "./Base.js";
 import config from "../config.js";
 
 export default class Help extends Base{
+  NoChange;
+
   constructor(){
     super();
 
@@ -10,7 +12,7 @@ export default class Help extends Base{
   }
 
   draw(ctx){
-    if(!this.display) return;
+    if(!this.isDisplay) return;
 
     ctx.drawImage(this.img,this.posX,this.posY);
   }

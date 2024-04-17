@@ -11,9 +11,15 @@ export default class Client{
     this.game = new Game(this,this.render);
     this.ws = new WebSocketManager(this.game);
 
-    this.render.getPage("Title").setDisplay(true);
+    this.setStatus("Waiting");
 
-    this.setStatus("TitlePage");
+    setInterval(()=>{
+      this.render.update();
+
+      if(this.status === Status.Waiting){
+        this.render.title();
+      }
+    },1000/config.fps);
   }
 
   setStatus(type){
@@ -24,22 +30,23 @@ export default class Client{
 
   keyDown(event){
     if(event.code === "KeyH"){
-      this.render.getComponent("Help")
-        .setPos(this.canvas.width/4,this.canvas.height/4)
+      this.render.get("help")
         .setDisplay(true);
-    }else if(this.status === Status.TitlePage){
-      this.render.getPage("Title").setDisplay(false);
-
+    }else if(this.status === Status.Waiting){
       if(this.ws.ready){
         this.ws.send({
           type: Event.SessionReady
         });
 
-        this.render.getPage("Matching").setDisplay(true);
+        this.render.get("titleText")
+          .setText("マッチング中")
 
         this.setStatus("Matching");
       }else{
-        this.render.getPage("NoResponse").setDisplay(true);
+        this.render.message("error")
+          .setPos(100,500)
+          .setColor("red")
+          .setText("サーバーが応答していません")
       }
     }else if(this.status === Status.Readying){
 
@@ -50,7 +57,8 @@ export default class Client{
 
   keyUp(event){
     if(event.code === "KeyH"){
-      this.render.getComponent("Help").setDisplay(false);
+      this.render.get("help")
+        .setDisplay(false);
     }
   }
 }

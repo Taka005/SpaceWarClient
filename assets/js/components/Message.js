@@ -4,8 +4,9 @@ export default class Message extends Base{
   constructor(){
     super();
 
-    this.color = "black";
+    this.color = "white";
     this.text = "";
+    this.font = "15pt Arial";
   }
 
   setColor(name){
@@ -20,8 +21,12 @@ export default class Message extends Base{
     return this;
   }
 
+  setFont(text){
+    this.font = text;
+  }
+
   draw(ctx){
-    ctx.font = "15pt Arial";
+    ctx.font = this.font;
     ctx.fillStyle = this.color;
     ctx.fillText(this.text,this.posX,this.posY);
   }

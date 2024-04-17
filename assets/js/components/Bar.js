@@ -8,7 +8,13 @@ export default class Bar extends Base{
     this.height = 0;
     this.value = 0;
     this.max = 0;
-    this.isActive = false;
+    this.activeIndex = 0;
+
+    const bars = [
+      { x: this.posX, y: this.posY, width: 400, height: 20, value: 33 },
+      { x: this.posX, y: this.posY+40, width: 400, height: 20, value: 33 },
+      { x: this.posX, y: this.posY+80, width: 400, height: 20, value: 33 }
+    ]
   }
 
   setSize(width,height){
@@ -18,16 +24,23 @@ export default class Bar extends Base{
     return this;
   }
 
+  setValue(value){
+    this.value = value;
+
+    return this;
+  }
+
   draw(ctx){
-    if(!this.display) return;
+    if(!this.isDisplay) return;
 
     ctx.beginPath();
     ctx.fillStyle = "white";
     ctx.fillRect(this.posX,this.poxY,this.width,this.height);
 
-    const posX = this.poxY + (this.value/100)*(this.width - this.max);
+    const posX = this.poxX + (this.value/this.max)*this.width;
+
     ctx.beginPath();
     ctx.fillStyle = this.isActive ? "blue" : "grey";
-    ctx.fillRect(this.posX,this.posY,poxY,this.height);
+    ctx.fillRect(this.posX,this.posY,posX,this.height);
   }
 }
