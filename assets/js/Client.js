@@ -13,12 +13,10 @@ export default class Client{
 
     this.setStatus("Waiting");
 
+    this.render.title();
+
     setInterval(()=>{
       this.render.update();
-
-      if(this.status === Status.Waiting){
-        this.render.title();
-      }
     },1000/config.fps);
   }
 
