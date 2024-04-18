@@ -6,7 +6,7 @@ export default class Title extends Base{
     super();
 
     this.img = new Image();
-    this.img.src = `${config.host}/assets/img/base.png`;
+    this.img.src = `${config.host}/assets/img/title.png`;
   }
 
   draw(ctx){

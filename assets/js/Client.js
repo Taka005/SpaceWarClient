@@ -42,7 +42,7 @@ export default class Client{
         this.setStatus("Matching");
       }else{
         this.render.message("error")
-          .setPos(100,500)
+          .setPos(300,500)
           .setColor("red")
           .setText("サーバーが応答していません");
       }

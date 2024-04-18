@@ -23,9 +23,9 @@ export default class Render extends RenderManager{
       .setDisplay(true);
 
     this.add("titleText",new Message())
-      .setPos(30,750)
+      .setPos(100,750)
       .setText("キーを押してスタート")
-      .setFont("30pt Arial")
+      .setFont("40pt Arial")
       .setDisplay(true);
   }
 }
