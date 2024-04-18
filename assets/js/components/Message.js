@@ -45,7 +45,6 @@ export default class Message extends Base{
     ctx.font = this.font;
     ctx.fillStyle = this.color;
     const size = ctx.measureText(this.text);
-    console.log(size);
     ctx.fillText(this.text,this.posX - size.width/2,this.posY - size.height/2);
   }
 }

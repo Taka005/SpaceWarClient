@@ -37,6 +37,7 @@ export default class Client{
    */
   keyDown(event){
     if(event.code === Key.Help){
+      console.log(Key)
       this.render.get("help")
         .setDisplay(true);
     }else if(this.status === Status.Waiting){
