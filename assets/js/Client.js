@@ -51,7 +51,7 @@ export default class Client{
         this.setStatus(Status.Matching);
       }else{
         this.render.message("error")
-          .setPos(300,500)
+          .setPos(400,500)
           .setColor("red")
           .setFont("25pt Arial")
           .setText("サーバーが応答していません");
