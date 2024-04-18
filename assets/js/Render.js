@@ -8,7 +8,7 @@ export default class Render extends RenderManager{
     super(canvas);
 
     this.add("help",new Help())
-      .setPos(200,200);
+      .setPos(400,400);
   }
 
   message(name){
@@ -23,7 +23,7 @@ export default class Render extends RenderManager{
       .setDisplay(true);
 
     this.add("titleText",new Message())
-      .setPos(100,750)
+      .setPos(400,750)
       .setText("キーを押してスタート")
       .setFont("40pt Arial")
       .setDisplay(true);

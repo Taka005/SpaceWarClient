@@ -1,9 +1,9 @@
 export default class Effect{
   constructor(){
     this.effect = {
-      attack: 33,
-      defence: 33,
-      speed: 33
+      attack: 0.33,
+      defence: 0.33,
+      speed: 0.33
     }
   }
 }

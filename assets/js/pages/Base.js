@@ -4,6 +4,10 @@ export default class Base{
     this.isDisplay = false;
   }
 
+  /**
+   * 表示状態を設定
+   * @param {Boolean} bool 表示するかどうか
+   */
   setDisplay(bool){
     this.isDisplay = bool;
 

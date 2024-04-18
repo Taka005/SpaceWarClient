@@ -1,4 +1,5 @@
 import Event from "./utils/Event.js";
+import Status from "./utils/Status.js";
 
 export default class Game{
   constructor(client,render){
@@ -10,7 +11,7 @@ export default class Game{
 
   join(sessionId){
     this.sessionId = sessionId;
-    this.client.setStatus("Readying");
+    this.client.setStatus(Status.Readying);
   }
 
   event(data){

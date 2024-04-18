@@ -8,8 +8,6 @@ export default class Readying extends Base{
 
     this.img = new Image();
     this.img.src = `${config.host}/assets/img/readying.png`;
-
-
   }
 
   draw(ctx){

@@ -9,18 +9,30 @@ export default class Message extends Base{
     this.font = "15pt Arial";
   }
 
+  /**
+   * 色を設定
+   * @param {String} name 色
+   */
   setColor(name){
     this.color = name;
 
     return this;
   }
 
+  /**
+   * テキストを設定
+   * @param {String} text テキスト
+   */
   setText(text){
     this.text = text;
 
     return this;
   }
 
+  /**
+   * フォントを設定
+   * @param {String} text フォント
+   */
   setFont(text){
     this.font = text;
 
@@ -31,7 +43,8 @@ export default class Message extends Base{
     if(!this.isDisplay) return
 
     ctx.font = this.font;
+    const size = ctx.measureText(this.text);
     ctx.fillStyle = this.color;
-    ctx.fillText(this.text,this.posX,this.posY);
+    ctx.fillText(this.text,this.posX - size.width/2,this.posY - size.height/2);
   }
 }

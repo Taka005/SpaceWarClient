@@ -4,6 +4,7 @@ import Game from "./Game.js";
 import config from "./config.js";
 import Event from "./utils/Event.js";
 import Status from "./utils/Status.js";
+import Key from "./utils/Key.js";
 
 export default class Client{
   constructor(canvas){
@@ -11,7 +12,7 @@ export default class Client{
     this.game = new Game(this,this.render);
     this.ws = new WebSocketManager(this.game);
 
-    this.setStatus("Waiting");
+    this.setStatus(Status.Waiting);
 
     this.render.title();
 
@@ -20,14 +21,22 @@ export default class Client{
     },1000/config.fps);
   }
 
+  /**
+   * ステータスを設定
+   * @param {Number} type ステータスコード
+   */
   setStatus(type){
-    if(!Status[type]) throw new Error("無効なステータスです");
+    if(!Object.values(Status).find(st=>st === type)) throw new Error("無効なステータスです");
 
-    this.status = Status[type];
+    this.status = type;
   }
 
+  /**
+   * キーダウンイベント
+   * @param {Event} event イベント
+   */
   keyDown(event){
-    if(event.code === "KeyH"){
+    if(event.code === Key.Help){
       this.render.get("help")
         .setDisplay(true);
     }else if(this.status === Status.Waiting){
@@ -39,11 +48,12 @@ export default class Client{
         this.render.get("titleText")
           .setText("マッチング中")
 
-        this.setStatus("Matching");
+        this.setStatus(Status.Matching);
       }else{
         this.render.message("error")
           .setPos(300,500)
           .setColor("red")
+          .setFont("25pt Arial")
           .setText("サーバーが応答していません");
       }
     }else if(this.status === Status.Readying){
@@ -53,8 +63,12 @@ export default class Client{
     }
   }
 
+  /**
+   * キーアップイベント
+   * @param {Event} event イベント
+   */
   keyUp(event){
-    if(event.code === "KeyH"){
+    if(event.code === Key.Help){
       this.render.get("help")
         .setDisplay(false);
     }

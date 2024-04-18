@@ -14,6 +14,10 @@ export default class Help extends Base{
   draw(ctx){
     if(!this.isDisplay) return;
 
-    ctx.drawImage(this.img,this.posX,this.posY);
+    ctx.drawImage(
+      this.img,
+      this.posX - this.img.width/2,
+      this.posY - this.img.height/2
+    );
   }
 }
