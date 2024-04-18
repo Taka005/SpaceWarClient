@@ -20,8 +20,6 @@ export default class RenderManager{
       .forEach(component=>{
         component.draw(this.ctx);
       });
-
-    console.log(this.elements);
   }
 
   /**
