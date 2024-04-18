@@ -1,12 +1,12 @@
 export default {
-  "Help": "keyR",
-  "Forward": "keyW",
-  "Backward": "keyS",
-  "Right": "keyD",
-  "Left": "keyA",
-  "RightRoll": "keyE",
-  "LeftRoll": "keyA",
-  "Move": "keyF",
-  "Control": "keyC",
+  "Help": "KeyR",
+  "Forward": "KeyW",
+  "Backward": "KeyS",
+  "Right": "KeyD",
+  "Left": "KeyA",
+  "RightRoll": "KeyE",
+  "LeftRoll": "KeyA",
+  "Move": "KeyF",
+  "Control": "KeyC",
   "Attack": "Space"
 }
