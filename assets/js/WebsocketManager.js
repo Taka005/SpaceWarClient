@@ -49,6 +49,8 @@ export default class WebSocketManager{
         this.game.playerId = data.playerId;
       }else if(data.event === Event.SessionFind){
         this.game.join(data.sessionId);
+      }else if(data.event === Event.SessionEnd){
+        this.game.reset();
       }else{
         if(this.game.sessionId){
           this.game.event(data);
