@@ -23,6 +23,8 @@ export default class Message extends Base{
 
   setFont(text){
     this.font = text;
+
+    return this;
   }
 
   draw(ctx){
