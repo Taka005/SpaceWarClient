@@ -11,12 +11,14 @@ export default class RenderManager{
 
     Object.values(this.elements)
       .filter(element=>element.type === "page")
+      .sort((p1,p2)=>p2.rank - p1.rank)
       .forEach(page=>{
         page.draw(this.ctx);
       });
 
     Object.values(this.elements)
       .filter(element=>element.type === "component")
+      .sort((p1,p2)=>p2.rank - p1.rank)
       .forEach(component=>{
         component.draw(this.ctx);
       });

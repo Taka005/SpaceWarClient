@@ -1,6 +1,7 @@
 export default class Base{
   constructor(){
     this.type = "component"
+    this.rank = 0;
     this.isDisplay = false;
     this.posX = 0;
     this.posY = 0

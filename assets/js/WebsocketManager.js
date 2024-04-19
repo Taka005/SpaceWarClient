@@ -46,7 +46,7 @@ export default class WebSocketManager{
       if(data.event === Event.ConnectionReady){
         this.ready = true;
 
-        this.game.playerId = data.playerId;
+        this.game.connect(data.playerId,data.config);
       }else if(data.event === Event.SessionFind){
         this.game.join(data.sessionId);
       }else if(data.event === Event.SessionEnd){

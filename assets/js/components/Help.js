@@ -9,6 +9,7 @@ export default class Help extends Base{
 
     this.img = new Image();
     this.img.src = `${config.host}/assets/img/help.png`;
+    this.rank = 2;
   }
 
   draw(ctx){

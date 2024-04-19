@@ -1,3 +1,4 @@
+import Map from "./Map.js";
 import Event from "./utils/Event.js";
 import Status from "./utils/Status.js";
 
@@ -7,6 +8,13 @@ export default class Game{
     this.render = render;
 
     this.reset();
+  }
+
+  connect(playerId,config){
+    this.playerId = playerId;
+    this.config = config;
+
+    this.map = new Map(config.width,config.height);
   }
 
   join(sessionId){
@@ -27,6 +35,8 @@ export default class Game{
   }
 
   reset(){
+    this.map = null;
+    this.config = null;
     this.playerId = null;
     this.sessionId = null;
     this.units = [];

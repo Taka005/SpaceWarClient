@@ -1,6 +1,7 @@
 export default class Base{
   constructor(){
     this.type = "page";
+    this.rank = 0;
     this.isDisplay = false;
   }
 

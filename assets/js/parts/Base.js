@@ -3,5 +3,6 @@ export default class Base{
 
   constructor(){
     this.type = "part";
+    this.rank = 0;
   }
 }

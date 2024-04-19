@@ -4,6 +4,7 @@ export default class Message extends Base{
   constructor(){
     super();
 
+    this.rank = 1;
     this.color = "white";
     this.text = "";
     this.font = "15pt Arial";
