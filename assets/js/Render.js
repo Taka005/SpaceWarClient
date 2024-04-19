@@ -1,5 +1,6 @@
 import RenderManager from "./RenderManager.js";
 import Title from "./pages/Title.js";
+import Readying from "./pages/Readying.js";
 import Help from "./components/Help.js";
 import Message from "./components/Message.js";
 
@@ -8,7 +9,16 @@ export default class Render extends RenderManager{
     super(canvas);
 
     this.add("help",new Help())
-      .setPos(400,400);
+      .setPos(400,400)
+      .setChange(false);
+
+    this.add("error",new Message())
+      .setPos(400,200)
+      .setChange(false);
+
+    this.add("message",new Message())
+      .setPos(400,300)
+      .setChange(false);
   }
 
   message(name){
@@ -26,6 +36,13 @@ export default class Render extends RenderManager{
       .setPos(400,750)
       .setText("キーを押してスタート")
       .setFont("40pt Arial")
+      .setDisplay(true);
+  }
+
+  readying(){
+    this.clear();
+
+    this.add("readying",new Readying())
       .setDisplay(true);
   }
 }

@@ -1,5 +1,4 @@
 import Base from "./Base.js";
-import Bar from "../components/Bar.js";
 import config from "../config.js";
 
 export default class Readying extends Base{

@@ -10,7 +10,7 @@ export default class Client{
   constructor(canvas){
     this.render = new Render(canvas);
     this.game = new Game(this,this.render);
-    this.ws = new WebSocketManager(this.game);
+    this.ws = new WebSocketManager(this.game,this);
 
     this.setStatus(Status.Waiting);
 

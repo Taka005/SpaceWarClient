@@ -11,14 +11,14 @@ export default class RenderManager{
 
     Object.values(this.elements)
       .filter(element=>element.type === "page")
-      .sort((p1,p2)=>p2.rank - p1.rank)
+      .sort((p1,p2)=>p1.rank - p2.rank)
       .forEach(page=>{
         page.draw(this.ctx);
       });
 
     Object.values(this.elements)
       .filter(element=>element.type === "component")
-      .sort((p1,p2)=>p2.rank - p1.rank)
+      .sort((p1,p2)=>p1.rank - p2.rank)
       .forEach(component=>{
         component.draw(this.ctx);
       });
@@ -60,7 +60,7 @@ export default class RenderManager{
    */
   clear(){
     Object.keys(this.elements).forEach(name=>{
-      if(this.get(name).hasOwnProperty("NoChange")) return;
+      if(!this.get(name).isChange) return;
 
       this.remove(name);
     });

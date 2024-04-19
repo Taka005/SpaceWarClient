@@ -8,13 +8,6 @@ export default class Bar extends Base{
     this.height = 0;
     this.value = 0;
     this.max = 0;
-    this.activeIndex = 0;
-
-    const bars = [
-      { x: this.posX, y: this.posY, width: 400, height: 20, value: 33 },
-      { x: this.posX, y: this.posY+40, width: 400, height: 20, value: 33 },
-      { x: this.posX, y: this.posY+80, width: 400, height: 20, value: 33 }
-    ]
   }
 
   setSize(width,height){

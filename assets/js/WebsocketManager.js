@@ -3,9 +3,10 @@ import parse from "./utils/parse.js";
 import Event from "./utils/Event.js";
 
 export default class WebSocketManager{
-  constructor(game){
+  constructor(game,client){
     this.connect();
 
+    this.client = client;
     this.game = game;
     this.ready = false;
 
@@ -51,6 +52,16 @@ export default class WebSocketManager{
         this.game.join(data.sessionId);
       }else if(data.type === Event.SessionEnd){
         this.game.reset();
+      }else if(data.type === Event.Error){
+        this.client.render.get("error")
+          .setText(data.message)
+          .setDisplay(true)
+          .setTime(5000,false);
+      }else if(data.type === Event.Message){
+        this.client.render.get("message")
+          .setText(data.message)
+          .setDisplay(true)
+          .setTime(5000,false);
       }else{
         if(this.game.sessionId){
           this.game.event(data);
