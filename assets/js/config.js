@@ -1,5 +1,5 @@
 export default {
   host: "https://taka005.github.io/SpaceWarClient",
-  ws: "wss://192.168.0.13:8000",
+  ws: "wss://ws.takasumibot.com",
   fps: 60
 }
