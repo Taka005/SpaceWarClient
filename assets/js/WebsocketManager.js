@@ -43,13 +43,13 @@ export default class WebSocketManager{
 
       console.log(`WebSocket Data: ${JSON.stringify(data)}`);
 
-      if(data.event === Event.ConnectionReady){
+      if(data.type === Event.ConnectionReady){
         this.ready = true;
 
         this.game.connect(data.playerId,data.config);
-      }else if(data.event === Event.SessionFind){
+      }else if(data.type === Event.SessionFind){
         this.game.join(data.sessionId);
-      }else if(data.event === Event.SessionEnd){
+      }else if(data.type === Event.SessionEnd){
         this.game.reset();
       }else{
         if(this.game.sessionId){
