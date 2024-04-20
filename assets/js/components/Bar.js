@@ -35,14 +35,12 @@ export default class Bar extends Base{
   draw(ctx){
     if(!this.isDisplay) return;
 
-    ctx.beginPath();
     ctx.fillStyle = "white";
-    ctx.fillRect(this.posX,this.posY,this.posX + this.width,this.posY + this.height);
+    ctx.fillRect(this.posX,this.posY,this.width,this.height);
 
-    const posX = this.posX + (this.value/this.max)*this.width;
+    const width = (this.value/this.max)*this.width;
 
-    ctx.beginPath();
     ctx.fillStyle = this.isActive ? "blue" : "grey";
-    ctx.fillRect(this.posX,this.posY,posX,this.posY + this.height);
+    ctx.fillRect(this.posX,this.posY,width,this.height);
   }
 }
