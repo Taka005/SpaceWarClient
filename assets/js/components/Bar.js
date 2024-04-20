@@ -23,6 +23,10 @@ export default class Bar extends Base{
     return this;
   }
 
+  setMax(max){
+    this.max = max;
+  }
+
   draw(ctx){
     if(!this.isDisplay) return;
 
