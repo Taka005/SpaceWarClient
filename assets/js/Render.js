@@ -3,6 +3,7 @@ import Title from "./pages/Title.js";
 import Readying from "./pages/Readying.js";
 import Help from "./components/Help.js";
 import Message from "./components/Message.js";
+import Bar from "./components/Bar.js";
 
 export default class Render extends RenderManager{
   constructor(canvas){
@@ -43,6 +44,13 @@ export default class Render extends RenderManager{
     this.clear();
 
     this.add("readying",new Readying())
+      .setDisplay(true);
+  }
+
+  bar(name){
+    return this.add(name,new Bar())
+      .setSize(50,500)
+      .setMax(1)
       .setDisplay(true);
   }
 }

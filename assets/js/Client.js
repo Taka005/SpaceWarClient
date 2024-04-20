@@ -58,9 +58,18 @@ export default class Client{
       }
     }else if(this.status === Status.Readying){
       if(event.code === Key.Right){
-
+        this.game.effect.add();
       }else if(event.code === Key.Left){
-
+        this.game.effect.remove();
+      }else if(event.code === Key.Backward){
+        this.game.effect.addIndex();
+      }else if(event.code === Key.Forward){
+        this.game.effect.removeIndex();
+      }else if(event.code === Key.Attack){
+        this.ws.send({
+          type: Event.GameReady,
+          effect: this.game.effect.export()
+        });
       }
     }else if(this.status === Status.Playing){
 

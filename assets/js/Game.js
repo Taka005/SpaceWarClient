@@ -21,6 +21,8 @@ export default class Game{
   join(sessionId){
     this.sessionId = sessionId;
     this.client.setStatus(Status.Readying);
+    this.render.readying();
+    this.effect = new Effect(this.render);
   }
 
   event(data){
@@ -36,7 +38,7 @@ export default class Game{
   }
 
   reset(){
-    this.effect = new Effect(this.render);
+    this.effect = null;
     this.map = null;
     this.config = null;
     this.playerId = null;
