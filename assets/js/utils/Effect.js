@@ -12,10 +12,10 @@ export default class Effect{
       this.render.bar("bar1")
         .setPos(150,300)
         .setValue(this.effect.attack),
-      this.render.add("bar2")
+      this.render.bar("bar2")
         .setPos(150,400)
         .setValue(this.effect.defence),
-      this.render.add("bar3")
+      this.render.bar("bar3")
         .setPos(150,500)
         .setValue(this.effect.speed)
     ]

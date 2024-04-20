@@ -5,7 +5,7 @@ export default class Base{
     this.isDisplay = false;
     this.isChange = true;
     this.posX = 0;
-    this.posY = 0
+    this.posY = 0;
   }
 
   /**

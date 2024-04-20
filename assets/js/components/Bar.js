@@ -37,9 +37,9 @@ export default class Bar extends Base{
 
     ctx.beginPath();
     ctx.fillStyle = "white";
-    ctx.fillRect(this.posX,this.poxY,this.posX + this.width,this.posY + this.height);
+    ctx.fillRect(this.posX,this.posY,this.posX + this.width,this.posY + this.height);
 
-    const posX = this.poxX + (this.value/this.max)*this.width;
+    const posX = this.posX + (this.value/this.max)*this.width;
 
     ctx.beginPath();
     ctx.fillStyle = this.isActive ? "blue" : "grey";
