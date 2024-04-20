@@ -20,9 +20,16 @@ export default class Effect{
         .setValue(this.effect.speed)
     ]
 
+    this.message = this.render.message("barMessage")
+      .setPos(400,600);
+
     this.active = 0;
 
     this.changeActive();
+  }
+
+  renderMessage(){
+    this.message.setText(`攻撃:${this.effect.attack} 防御:${this.effect.defence} スピード:${this.effect.speed}`);
   }
 
   changeActive(){
@@ -65,6 +72,8 @@ export default class Effect{
         this.bars[i].setValue(array[i]);
       }
     });
+
+    this.renderMessage();
   }
 
   remove(){
@@ -75,6 +84,8 @@ export default class Effect{
         this.bars[i].setValue(array[i]);
       }
     });
+
+    this.renderMessage();
   }
 
   export(){
