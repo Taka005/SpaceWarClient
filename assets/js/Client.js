@@ -57,7 +57,11 @@ export default class Client{
           .setText("サーバーが応答していません");
       }
     }else if(this.status === Status.Readying){
+      if(event.code === Key.Right){
 
+      }else if(event.code === Key.Left){
+
+      }
     }else if(this.status === Status.Playing){
 
     }

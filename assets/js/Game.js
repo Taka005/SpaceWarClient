@@ -1,4 +1,5 @@
 import Map from "./Map.js";
+import Effect from "./utils/Effect.js";
 import Event from "./utils/Event.js";
 import Status from "./utils/Status.js";
 
@@ -35,6 +36,7 @@ export default class Game{
   }
 
   reset(){
+    this.effect = new Effect(this.render);
     this.map = null;
     this.config = null;
     this.playerId = null;
