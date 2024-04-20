@@ -13,6 +13,8 @@ export default class Bar extends Base{
 
   setActive(bool){
     this.isActive = bool;
+
+    return this;
   }
 
   setSize(width,height){
@@ -30,6 +32,8 @@ export default class Bar extends Base{
 
   setMax(max){
     this.max = max;
+
+    return this;
   }
 
   draw(ctx){
