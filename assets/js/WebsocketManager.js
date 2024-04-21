@@ -60,6 +60,7 @@ export default class WebSocketManager{
       }else if(data.type === Event.Error){
         this.client.render.get("error")
           .setText(data.message)
+          .setColor("red")
           .setDisplay(true)
           .setTime(5000,false);
       }else if(data.type === Event.Message){
