@@ -50,7 +50,7 @@ export default class Render extends RenderManager{
   bar(name){
     return this.add(name,new Bar())
       .setSize(500,50)
-      .setMax(1)
+      .setMax(100)
       .setDisplay(true);
   }
 }

@@ -66,7 +66,7 @@ export default class Effect{
   add(){
     Object.keys(this.effect).forEach((eff,i)=>{
       if(this.active === i){
-        if(Object.values(this.effect).reduce(total,eff=>total+eff,0) >= 100) return;
+        if(Object.values(this.effect).reduce((total,eff)=>total+eff,0) >= 100) return;
 
         this.effect[eff] += 1;
 
