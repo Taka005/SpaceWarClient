@@ -1,12 +1,14 @@
 import config from "./config.js";
 import parse from "./utils/parse.js";
 import Event from "./utils/Event.js";
+import Status from "./utils/Status.js";
 
 export default class WebSocketManager{
-  constructor(client){
+  constructor(game,client){
     this.connect();
 
     this.client = client;
+    this.game = game;
     this.ready = false;
 
     setInterval(()=>{
@@ -29,8 +31,10 @@ export default class WebSocketManager{
       this.ready = false;
 
       setTimeout(()=>{
+        this.game.leave();
+
         this.connect();
-      },1000);
+      },3000);
     });
 
     this.ws.addEventListener("error",()=>{
@@ -43,10 +47,32 @@ export default class WebSocketManager{
 
       console.log(`WebSocket Data: ${JSON.stringify(data)}`);
 
-      if(data.event === Event.ConnectionReady){
+      if(data.type === Event.ConnectionReady){
         this.ready = true;
 
-        this.client.playerId = data.playerId;
+        this.game.connect(data.playerId,data.config);
+      }else if(data.type === Event.SessionFind){
+        this.game.join(data.sessionId);
+      }else if(data.type === Event.GameReady){
+        this.client.setStatus(Status.Ready);
+
+        this.client.render.ready();
+      }else if(data.type === Event.SessionEnd){
+        this.game.leave();
+      }else if(data.type === Event.Error){
+        this.client.render.get("error")
+          .setText(data.message)
+          .setDisplay(true)
+          .setTime(5000,false);
+      }else if(data.type === Event.Message){
+        this.client.render.get("message")
+          .setText(data.message)
+          .setDisplay(true)
+          .setTime(5000,false);
+      }else{
+        if(this.game.sessionId){
+          this.game.event(data);
+        }
       }
     });
   }

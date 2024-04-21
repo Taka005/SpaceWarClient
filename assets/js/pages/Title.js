@@ -10,7 +10,7 @@ export default class Title extends Base{
   }
 
   draw(ctx){
-    if(!this.display) return;
+    if(!this.isDisplay) return;
 
     ctx.drawImage(this.img,0,0);
   }

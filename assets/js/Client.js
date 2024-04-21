@@ -1,40 +1,89 @@
 import WebSocketManager from "./WebsocketManager.js";
 import Render from "./Render.js";
+import Game from "./Game.js";
+import config from "./config.js";
 import Event from "./utils/Event.js";
 import Status from "./utils/Status.js";
+import Key from "./utils/Key.js";
 
 export default class Client{
   constructor(canvas){
-    this.canvas = canvas;
-    this.ws = new WebSocketManager(this);
-    this.render = new Render(this.canvas);
+    this.render = new Render(canvas);
+    this.game = new Game(this,this.render);
+    this.ws = new WebSocketManager(this.game,this);
 
-    this.render.getPage("Title").setDisplay(true);
+    this.setStatus(Status.Waiting);
 
-    this.setStatus("TitlePage");
+    this.render.title();
+
+    setInterval(()=>{
+      this.render.update();
+    },1000/config.fps);
   }
 
+  /**
+   * ステータスを設定
+   * @param {Number} type ステータスコード
+   */
   setStatus(type){
-    if(!Status[type]) throw new Error("無効なステータスです");
+    if(!Object.values(Status).find(st=>st === type)) throw new Error("無効なステータスです");
 
-    this.status = Status[type];
+    this.status = type;
   }
 
-  key(event){
-    if(this.status === Status.TitlePage){
-      this.render.getPage("Title").setDisplay(false);
-
+  /**
+   * キーダウンイベント
+   * @param {Event} event イベント
+   */
+  keyDown(event){
+    if(event.code === Key.Help){
+      this.render.get("help")
+        .setDisplay(true);
+    }else if(this.status === Status.Waiting){
       if(this.ws.ready){
         this.ws.send({
           type: Event.SessionReady
         });
 
-        this.render.getPage("Matching").setDisplay(true);
+        this.render.get("titleText")
+          .setText("マッチング中")
 
-        this.setStatus("Matching");
+        this.setStatus(Status.Matching);
       }else{
-        this.render.getPage("NoResponse").setDisplay(true);
+        this.render.message("error")
+          .setPos(400,500)
+          .setColor("red")
+          .setFont("25pt Arial")
+          .setText("サーバーが応答していません");
       }
+    }else if(this.status === Status.Readying){
+      if(event.code === Key.Right){
+        this.game.effect.add();
+      }else if(event.code === Key.Left){
+        this.game.effect.remove();
+      }else if(event.code === Key.Backward){
+        this.game.effect.addIndex();
+      }else if(event.code === Key.Forward){
+        this.game.effect.removeIndex();
+      }else if(event.code === Key.Attack){
+        this.ws.send({
+          type: Event.GameReady,
+          effect: this.game.effect.export()
+        });
+      }
+    }else if(this.status === Status.Playing){
+
+    }
+  }
+
+  /**
+   * キーアップイベント
+   * @param {Event} event イベント
+   */
+  keyUp(event){
+    if(event.code === Key.Help){
+      this.render.get("help")
+        .setDisplay(false);
     }
   }
 }
