@@ -3,9 +3,9 @@ export default class Effect{
     this.render = render;
 
     this.effect = {
-      attack: 0.34,
-      defence: 0.33,
-      speed: 0.33
+      attack: 34,
+      defence: 33,
+      speed: 33
     }
 
     this.bars = [
@@ -66,9 +66,9 @@ export default class Effect{
   add(){
     Object.keys(this.effect).forEach((eff,i)=>{
       if(this.active === i){
-        if(Object.values(this.effect).reduce(total,eff=>total+eff,0) >= 1) return;
+        if(Object.values(this.effect).reduce(total,eff=>total+eff,0) >= 100) return;
 
-        this.effect[eff] += 0.01;
+        this.effect[eff] += 1;
 
         this.bars[i].setValue(this.effect[eff]);
       }
@@ -80,7 +80,9 @@ export default class Effect{
   remove(){
     Object.keys(this.effect).forEach((eff,i)=>{
       if(this.active === i){
-        this.effect[eff] -= 0.01;
+        if(this.effect[eff] <= 1) return;
+
+        this.effect[eff] -= 1;
 
         this.bars[i].setValue(this.effect[eff]);
       }
@@ -90,6 +92,10 @@ export default class Effect{
   }
 
   export(){
-    return this.effect;
+    return {
+      attack: this.effect.attack/100,
+      defence: this.effect.defence/100,
+      speed: this.effect.speed/100
+    }
   }
 }
