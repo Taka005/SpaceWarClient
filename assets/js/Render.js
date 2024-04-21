@@ -1,6 +1,7 @@
 import RenderManager from "./RenderManager.js";
 import Title from "./pages/Title.js";
 import Readying from "./pages/Readying.js";
+import Ready from "./pages/Ready.js";
 import Help from "./components/Help.js";
 import Message from "./components/Message.js";
 import Bar from "./components/Bar.js";
@@ -44,6 +45,13 @@ export default class Render extends RenderManager{
     this.clear();
 
     this.add("readying",new Readying())
+      .setDisplay(true);
+  }
+
+  ready(){
+    this.clear();
+
+    this.add("ready",new Ready())
       .setDisplay(true);
   }
 

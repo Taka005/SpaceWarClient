@@ -1,6 +1,7 @@
 import config from "./config.js";
 import parse from "./utils/parse.js";
 import Event from "./utils/Event.js";
+import Status from "./utils/Status.js";
 
 export default class WebSocketManager{
   constructor(game,client){
@@ -50,6 +51,10 @@ export default class WebSocketManager{
         this.game.connect(data.playerId,data.config);
       }else if(data.type === Event.SessionFind){
         this.game.join(data.sessionId);
+      }else if(data.type === Event.GameReady){
+        this.client.setStatus(Status.Ready);
+
+        this.client.render.ready();
       }else if(data.type === Event.SessionEnd){
         this.game.reset();
       }else if(data.type === Event.Error){
