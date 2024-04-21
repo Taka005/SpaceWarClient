@@ -31,12 +31,7 @@ export default class WebSocketManager{
       this.ready = false;
 
       setTimeout(()=>{
-        this.game.disconnect();
-
-        this.client.render.get("error")
-          .setDisplay(true)
-          .setTime(5000,false)
-          .setText("サーバーが応答しませんでした");
+        this.game.leave();
 
         this.connect();
       },3000);
@@ -63,7 +58,7 @@ export default class WebSocketManager{
 
         this.client.render.ready();
       }else if(data.type === Event.SessionEnd){
-        this.game.disconnect();
+        this.game.leave();
       }else if(data.type === Event.Error){
         this.client.render.get("error")
           .setText(data.message)
