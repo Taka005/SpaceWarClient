@@ -26,6 +26,7 @@ export default class Effect{
     this.active = 0;
 
     this.changeActive();
+    this.renderMessage();
   }
 
   renderMessage(){
@@ -63,13 +64,13 @@ export default class Effect{
   }
 
   add(){
-    Object.values(this.effect).forEach((_,i,array)=>{
+    Object.keys(this.effect).forEach((eff,i)=>{
       if(this.active === i){
         if(Object.values(this.effect).reduce(total,eff=>total+eff,0) >= 1) return;
 
-        array[i] += 0.01;
+        this.effect[eff] += 0.01;
 
-        this.bars[i].setValue(array[i]);
+        this.bars[i].setValue(this.effect[eff]);
       }
     });
 
@@ -77,11 +78,11 @@ export default class Effect{
   }
 
   remove(){
-    Object.values(this.effect).forEach((_,i,array)=>{
+    Object.keys(this.effect).forEach((eff,i)=>{
       if(this.active === i){
-        array[i] -= 0.01;
+        this.effect[eff] -= 0.01;
 
-        this.bars[i].setValue(array[i]);
+        this.bars[i].setValue(this.effect[eff]);
       }
     });
 
