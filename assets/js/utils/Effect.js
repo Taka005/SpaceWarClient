@@ -4,7 +4,7 @@ export default class Effect{
 
     this.effect = {
       attack: 34,
-      defence: 33,
+      defense: 33,
       speed: 33
     }
 
@@ -14,7 +14,7 @@ export default class Effect{
         .setValue(this.effect.attack),
       this.render.bar("bar2")
         .setPos(150,400)
-        .setValue(this.effect.defence),
+        .setValue(this.effect.defense),
       this.render.bar("bar3")
         .setPos(150,500)
         .setValue(this.effect.speed)
@@ -30,7 +30,7 @@ export default class Effect{
   }
 
   renderMessage(){
-    this.message.setText(`攻撃:${this.effect.attack} 防御:${this.effect.defence} スピード:${this.effect.speed}`);
+    this.message.setText(`攻撃:${this.effect.attack} 防御:${this.effect.defense} スピード:${this.effect.speed}`);
   }
 
   changeActive(){
@@ -94,7 +94,7 @@ export default class Effect{
   export(){
     return {
       attack: this.effect.attack/100,
-      defence: this.effect.defence/100,
+      defense: this.effect.defense/100,
       speed: this.effect.speed/100
     }
   }
