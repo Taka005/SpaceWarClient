@@ -26,6 +26,8 @@ export default class Game{
   }
 
   leave(){
+    if(this.client.status === Status.Waiting) return;
+
     this.reset();
     this.client.setStatus(Status.Waiting);
     this.render.title();
