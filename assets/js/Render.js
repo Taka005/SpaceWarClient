@@ -16,6 +16,7 @@ export default class Render extends RenderManager{
 
     this.add("error",new Message())
       .setPos(400,200)
+      .setColor("red")
       .setChange(false);
 
     this.add("message",new Message())

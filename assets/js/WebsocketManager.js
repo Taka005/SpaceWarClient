@@ -31,8 +31,15 @@ export default class WebSocketManager{
       this.ready = false;
 
       setTimeout(()=>{
+        this.game.disconnect();
+
+        this.client.render.get("error")
+          .setDisplay(true)
+          .setTime(5000,false)
+          .setText("サーバーが応答しませんでした");
+
         this.connect();
-      },1000);
+      },3000);
     });
 
     this.ws.addEventListener("error",()=>{
@@ -56,11 +63,10 @@ export default class WebSocketManager{
 
         this.client.render.ready();
       }else if(data.type === Event.SessionEnd){
-        this.game.reset();
+        this.game.disconnect();
       }else if(data.type === Event.Error){
         this.client.render.get("error")
           .setText(data.message)
-          .setColor("red")
           .setDisplay(true)
           .setTime(5000,false);
       }else if(data.type === Event.Message){

@@ -18,6 +18,12 @@ export default class Game{
     this.map = new Map(config.width,config.height);
   }
 
+  disconnect(){
+    this.reset();
+    this.render.title();
+    this.client.setStatus(Status.Waiting);
+  }
+
   join(sessionId){
     this.sessionId = sessionId;
     this.client.setStatus(Status.Readying);
