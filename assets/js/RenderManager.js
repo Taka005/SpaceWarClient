@@ -4,6 +4,7 @@ export default class RenderManager{
     this.ctx = this.canvas.getContext("2d");
 
     this.elements = {};
+    this.parts = [];
   }
 
   update(){
@@ -21,6 +22,13 @@ export default class RenderManager{
       .sort((p1,p2)=>p1.rank - p2.rank)
       .forEach(component=>{
         component.draw(this.ctx);
+      });
+
+
+    this.parts
+      .sort((p1,p2)=>p1.rank - p2.rank)
+      .forEach(part=>{
+        part.draw(this.ctx);
       });
   }
 
@@ -53,6 +61,16 @@ export default class RenderManager{
     if(!this.get(name)) throw new Error("存在しない要素です");
 
     delete this.elements[name];
+  }
+
+  addPart(part){
+    this.parts.push(part);
+
+    return part;
+  }
+
+  removePart(name){
+    this.parts = this.parts.filter(part=>part.name !== name);
   }
 
   /**

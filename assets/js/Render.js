@@ -2,6 +2,7 @@ import RenderManager from "./RenderManager.js";
 import Title from "./pages/Title.js";
 import Readying from "./pages/Readying.js";
 import Ready from "./pages/Ready.js";
+import Play from "./pages/play.js";
 import Help from "./components/Help.js";
 import Message from "./components/Message.js";
 import Bar from "./components/Bar.js";
@@ -24,12 +25,12 @@ export default class Render extends RenderManager{
       .setChange(false);
   }
 
-  message(name){
+  setMessage(name){
     return this.add(name,new Message())
       .setDisplay(true);
   }
 
-  title(){
+  setTitle(){
     this.clear();
 
     this.add("title",new Title())
@@ -42,21 +43,28 @@ export default class Render extends RenderManager{
       .setDisplay(true);
   }
 
-  readying(){
+  setReadying(){
     this.clear();
 
     this.add("readying",new Readying())
       .setDisplay(true);
   }
 
-  ready(){
+  setReady(){
     this.clear();
 
     this.add("ready",new Ready())
       .setDisplay(true);
   }
 
-  bar(name){
+  setPlay(){
+    this.clear();
+
+    this.add("play",new Play())
+      .setDisplay(true);
+  }
+
+  setBar(name){
     return this.add(name,new Bar())
       .setSize(500,50)
       .setMax(100)

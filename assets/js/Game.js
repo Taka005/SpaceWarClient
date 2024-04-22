@@ -21,7 +21,7 @@ export default class Game{
   join(sessionId){
     this.sessionId = sessionId;
     this.client.setStatus(Status.Readying);
-    this.render.readying();
+    this.render.setReadying();
     this.effect = new Effect(this.render);
   }
 
@@ -30,7 +30,7 @@ export default class Game{
 
     this.reset();
     this.client.setStatus(Status.Waiting);
-    this.render.title();
+    this.render.setTitle();
   }
 
   event(data){

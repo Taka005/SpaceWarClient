@@ -14,7 +14,7 @@ export default class Client{
 
     this.setStatus(Status.Waiting);
 
-    this.render.title();
+    this.render.setTitle();
 
     setInterval(()=>{
       this.render.update();
@@ -50,7 +50,7 @@ export default class Client{
 
         this.setStatus(Status.Matching);
       }else{
-        this.render.message("error")
+        this.render.setMessage("error")
           .setPos(400,500)
           .setColor("red")
           .setFont("25pt Arial")
@@ -72,7 +72,25 @@ export default class Client{
         });
       }
     }else if(this.status === Status.Playing){
+      if(event.code === Key.Forward){
 
+      }else if(event.code === Key.Backward){
+
+      }else if(event.code === Key.Right){
+
+      }else if(event.code === Key.Left){
+
+      }else if(event.code === Key.RightRoll){
+
+      }else if(event.code === Key.LeftRoll){
+
+      }else if(event.code === Key.Attack){
+
+      }else if(event.code === Key.Move){
+
+      }else if(event.code === Key.Control){
+
+      }
     }
   }
 

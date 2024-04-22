@@ -1,8 +1,11 @@
 export default class Base{
-  NoChange;
-
   constructor(){
-    this.type = "part";
     this.rank = 0;
+  }
+
+  setName(name){
+    this.name = name;
+
+    return this;
   }
 }

@@ -56,7 +56,11 @@ export default class WebSocketManager{
       }else if(data.type === Event.GameReady){
         this.client.setStatus(Status.Ready);
 
-        this.client.render.ready();
+        this.client.render.setReady();
+      }else if(data.type === Event.GameStart){
+        this.client.setStatus(Status.Playing);
+
+        this.client.render.setPlay();
       }else if(data.type === Event.SessionEnd){
         this.game.leave();
       }else if(data.type === Event.Error){

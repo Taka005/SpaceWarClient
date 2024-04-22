@@ -9,18 +9,18 @@ export default class Effect{
     }
 
     this.bars = [
-      this.render.bar("bar1")
+      this.render.setBar("bar1")
         .setPos(150,300)
         .setValue(this.effect.attack),
-      this.render.bar("bar2")
+      this.render.setBar("bar2")
         .setPos(150,400)
         .setValue(this.effect.defense),
-      this.render.bar("bar3")
+      this.render.setBar("bar3")
         .setPos(150,500)
         .setValue(this.effect.speed)
     ]
 
-    this.message = this.render.message("barMessage")
+    this.message = this.render.setMessage("barMessage")
       .setPos(400,600);
 
     this.active = 0;
