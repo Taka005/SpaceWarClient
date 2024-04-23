@@ -5,6 +5,8 @@ export default class RenderManager{
 
     this.elements = {};
     this.parts = [];
+
+    this.rotate = 0;
   }
 
   update(){
@@ -24,12 +26,17 @@ export default class RenderManager{
         component.draw(this.ctx);
       });
 
+    this.ctx.save();
+    this.ctx.translate(this.canvas.width/2,this.canvas.height/2);
+    this.ctx.rotate(this.rotate*(Math.PI/180));
 
     this.parts
       .sort((p1,p2)=>p1.rank - p2.rank)
       .forEach(part=>{
         part.draw(this.ctx);
       });
+
+    this.ctx.restore();
   }
 
   /**
@@ -63,12 +70,21 @@ export default class RenderManager{
     delete this.elements[name];
   }
 
+  /**
+   * パーツを追加
+   * @param {Object} part 追加するパーツ
+   * @returns {Object} 追加したパーツ
+   */
   addPart(part){
     this.parts.push(part);
 
     return part;
   }
 
+  /**
+   * パーツを削除
+   * @param {String} name 対象のパーツ名
+   */
   removePart(name){
     this.parts = this.parts.filter(part=>part.name !== name);
   }

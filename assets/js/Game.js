@@ -11,6 +11,13 @@ export default class Game{
     this.reset();
   }
 
+  setPos(posX,posY){
+    if(!this.map) return;
+
+    this.map.posX = posX;
+    this.map.posY = posY;
+  }
+
   connect(playerId,config){
     this.playerId = playerId;
     this.config = config;

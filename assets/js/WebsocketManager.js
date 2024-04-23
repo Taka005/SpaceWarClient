@@ -61,6 +61,7 @@ export default class WebSocketManager{
         this.client.setStatus(Status.Playing);
 
         this.client.render.setPlay();
+        this.client.game.setPos(data.posX,data.posY);
       }else if(data.type === Event.SessionEnd){
         this.game.leave();
       }else if(data.type === Event.Error){

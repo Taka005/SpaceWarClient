@@ -25,11 +25,19 @@ export default class Render extends RenderManager{
       .setChange(false);
   }
 
+  /**
+   * メッセージを表示
+   * @param {String} name 追加するメッセージ名
+   * @returns {Message} 追加したメッセージ
+   */
   setMessage(name){
     return this.add(name,new Message())
       .setDisplay(true);
   }
 
+  /**
+   * タイトル画面を表示
+   */
   setTitle(){
     this.clear();
 
@@ -43,6 +51,9 @@ export default class Render extends RenderManager{
       .setDisplay(true);
   }
 
+  /**
+   * 準備画面を表示
+   */
   setReadying(){
     this.clear();
 
@@ -50,6 +61,9 @@ export default class Render extends RenderManager{
       .setDisplay(true);
   }
 
+  /**
+   * 準備完了画面を表示
+   */
   setReady(){
     this.clear();
 
@@ -57,6 +71,9 @@ export default class Render extends RenderManager{
       .setDisplay(true);
   }
 
+  /**
+   * ゲーム画面を表示
+   */
   setPlay(){
     this.clear();
 
@@ -64,6 +81,11 @@ export default class Render extends RenderManager{
       .setDisplay(true);
   }
 
+  /**
+   * バーを表示
+   * @param {String} name 設定する名前
+   * @returns {Bar} 追加したばー
+   */
   setBar(name){
     return this.add(name,new Bar())
       .setSize(500,50)
