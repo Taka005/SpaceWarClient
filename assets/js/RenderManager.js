@@ -107,12 +107,18 @@ export default class RenderManager{
 
   /**
    * 初期化
+   * @param {Boolean} force 強制するかどうか
    */
-  clear(){
-    Object.keys(this.elements).forEach(name=>{
-      if(!this.get(name).isChange) return;
+  clear(force = false){
+    if(!force){
+      Object.keys(this.elements).forEach(name=>{
+        if(!this.get(name).isChange) return;
 
-      this.remove(name);
-    });
+        this.remove(name);
+      });
+    }else{
+      this.elements = {};
+      this.parts = [];
+    }
   }
 }

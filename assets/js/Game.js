@@ -15,8 +15,8 @@ export default class Game{
     if(!this.map) return;
 
     this.teamId = teamId;
-    this.map.posX = posX - 400;
-    this.map.posY = posY - 400;
+    this.map.posX = posX;
+    this.map.posY = posY;
   }
 
   connect(playerId,config){
@@ -88,5 +88,6 @@ export default class Game{
     this.playerId = null;
     this.sessionId = null;
     this.teamId = null;
+    this.render.clear(true);
   }
 }
