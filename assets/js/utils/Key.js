@@ -1,5 +1,5 @@
 export default {
-  "Help": "KeyR",
+  "Help": "KeyG",
   "Forward": "KeyW",
   "Backward": "KeyS",
   "Right": "KeyD",
@@ -8,5 +8,7 @@ export default {
   "LeftRoll": "KeyA",
   "Move": "KeyF",
   "Control": "KeyC",
+  "Separate": "KeyR",
+  "Merge": "KeyT",
   "Attack": "Space"
 }

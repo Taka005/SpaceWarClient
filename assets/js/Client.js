@@ -5,12 +5,16 @@ import config from "./config.js";
 import Event from "./utils/Event.js";
 import Status from "./utils/Status.js";
 import Key from "./utils/Key.js";
+import Mouse from "./utils/Mouse.js";
+import lib from "./utils/lib.js";
 
 export default class Client{
   constructor(canvas){
     this.render = new Render(canvas);
     this.game = new Game(this,this.render);
     this.ws = new WebSocketManager(this.game,this);
+
+    this.mouse = new Mouse();
 
     this.setStatus(Status.Waiting);
 
@@ -85,11 +89,31 @@ export default class Client{
       }else if(event.code === Key.LeftRoll){
 
       }else if(event.code === Key.Attack){
+        const { posX, posY } = lib.getMousePos(event);
 
+        this.ws.send({
+          type: Event.Attack,
+          posX: posX,
+          posY: posY
+        });
       }else if(event.code === Key.Move){
+        const { posX, posY } = lib.getMousePos(event);
 
+        this.ws.send({
+          type: Event.TargetPosition,
+          posX: posX,
+          posY: posY
+        });
       }else if(event.code === Key.Control){
-
+        this.mouse.down(event);
+      }else if(event.code === Key.Separate){
+        this.ws.send({
+          type: Event.SeparateUnit
+        });
+      }else if(event.code === Key.Merge){
+        this.ws.send({
+          type: Event.MergeUnit
+        });
       }
     }
   }
@@ -102,6 +126,16 @@ export default class Client{
     if(event.code === Key.Help){
       this.render.get("help")
         .setDisplay(false);
+    }else if(this.status === Status.Playing){
+      if(event.code === Key.Control){
+        this.mouse.up(event);
+
+        this.ws.send({
+          type: Event.ControlUnit,
+          start: this.mouse.start,
+          end: this.mouse.end
+        });
+      }
     }
   }
 }
