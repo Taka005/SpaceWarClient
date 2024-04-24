@@ -6,6 +6,9 @@ import Play from "./pages/play.js";
 import Help from "./components/Help.js";
 import Message from "./components/Message.js";
 import Bar from "./components/Bar.js";
+import Unit from "./parts/Unit.js";
+import Range from "./parts/Range.js";
+import Bullet from "./parts/Bullet.js";
 
 export default class Render extends RenderManager{
   constructor(canvas){
@@ -91,5 +94,47 @@ export default class Render extends RenderManager{
       .setSize(500,50)
       .setMax(100)
       .setDisplay(true);
+  }
+
+  /**
+   * ユニットを表示
+   * @param {String} id ID
+   * @param {Object} units ユニット
+   * @param {String} color 色
+   * @param {Number} range 索敵範囲
+   */
+  setUnits(id,units,color,range){
+    this.removePart(id);
+    this.removePart(`${id}Range`);
+
+    units.forEach(unit=>{
+      this.addPart(new Unit())
+        .setName(id)
+        .setPos(unit.posX,unit.posY)
+        .setHp(unit.hp)
+        .setSize(unit.size)
+        .setColor(color)
+        .setFocus(unit.isFocus);
+
+      this.addPart(new Range())
+        .setName(`${id}Range`)
+        .setPos(unit.posX,unit.posY)
+        .setSize(range);
+    });
+  }
+
+  /**
+   * 弾を表示
+   * @param {Object} bullets 球
+   */
+  setBullets(bullets){
+    this.removePart("bullet");
+
+    bullets.forEach(bullet=>{
+      this.addPart(new Bullet())
+        .setName("bullet")
+        .setPos(bullet.posX,bullet.posY)
+        .setSize(bullet.size);
+    });
   }
 }

@@ -1,15 +1,13 @@
 import Base from "./Base";
 
-export default class Bullet extends Base{
+export default class Range extends Base{
   constructor(){
     super();
-
-    this.rank = 2;
   }
 
   /**
-   * 弾のサイズを設定
-   * @param {Number} size 弾のサイズ
+   * 範囲のサイズを設定
+   * @param {Number} size 範囲
    */
   setSize(size){
     this.size = size;
@@ -18,8 +16,8 @@ export default class Bullet extends Base{
   }
 
   draw(){
-    ctx.strokeStyle = "yellow";
-    ctx.fillStyle = "yellow";
+    ctx.strokeStyle = "white";
+    ctx.fillStyle = "white";
     ctx.lineWidth = 1;
 
     ctx.beginPath();

@@ -15,7 +15,7 @@ export default class Map{
 
   }
 
-  toGamePos(posX,posY){
+  toClientPos(posX,posY){
     return {
       posX: posX - this.posX,
       posY: posY - this.posY

@@ -11,9 +11,10 @@ export default class Game{
     this.reset();
   }
 
-  setPos(posX,posY){
+  start({ posX, posY, teamId }){
     if(!this.map) return;
 
+    this.teamId = teamId;
     this.map.posX = posX;
     this.map.posY = posY;
   }
@@ -42,13 +43,41 @@ export default class Game{
 
   event(data){
     if(data.type === Event.UnitPosition){
-      this.units = data.units;
+      data.units.forEach(unit=>{
+        const { posX, posY } = this.map.toClientPos(unit.posX,unit.posY);
+
+        unit.posX = posX;
+        unit.posY = posY;
+      });
+
+      this.render.setUnit("unit",data.units,"blue",config.unit.searchRange);
     }else if(data.type === Event.TeamUnitPosition){
-      this.teamUnits = data.units;
+      data.units.forEach(unit=>{
+        const { posX, posY } = this.map.toClientPos(unit.posX,unit.posY);
+
+        unit.posX = posX;
+        unit.posY = posY;
+      });
+
+      this.render.setUnit("teamUnit",data.units,"green",config.unit.searchRange);
     }else if(data.type === Event.EnemyUnitPosition){
-      this.enemyUnits = data.units;
+      data.units.forEach(unit=>{
+        const { posX, posY } = this.map.toClientPos(unit.posX,unit.posY);
+
+        unit.posX = posX;
+        unit.posY = posY;
+      });
+
+      this.render.setUnit("enemyUnit",data.units,"red",config.unit.searchRange);
     }else if(data.type === Event.BulletPosition){
-      this.bullets = data.bullets;
+      data.bullets.forEach(bullet=>{
+        const { posX, posY } = this.map.toClientPos(bullet.posX,bullet.posY);
+
+        bullet.posX = posX;
+        bullet.posY = posY;
+      });
+
+      this.render.setUnit(data.bullets);
     }
   }
 
@@ -58,9 +87,6 @@ export default class Game{
     this.config = null;
     this.playerId = null;
     this.sessionId = null;
-    this.units = [];
-    this.teamUnits = [];
-    this.enemyUnits = [];
-    this.bullets = [];
+    this.teamId = null;
   }
 }

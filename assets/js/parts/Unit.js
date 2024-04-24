@@ -4,6 +4,7 @@ export default class Unit extends Base{
   constructor(){
     super();
 
+    this.rank = 1;
     this.isFocus = false;
   }
 
@@ -47,27 +48,7 @@ export default class Unit extends Base{
     return hp;
   }
 
-  /**
-   * 索敵範囲を設定
-   * @param {Number} size 索敵範囲
-   */
-  setSearch(size){
-    this.search = size;
-
-    return this;
-  }
-
   draw(){
-    if(this.search){
-      ctx.strokeStyle = "white";
-      ctx.fillStyle = "white";
-      ctx.lineWidth = 1;
-
-      ctx.beginPath();
-      ctx.arc(this.posX,this.posY,this.search,0,2*Math.PI);
-      ctx.fill();
-    }
-
     ctx.strokeStyle = this.color;
     ctx.fillStyle = this.color;
 
@@ -76,7 +57,6 @@ export default class Unit extends Base{
 
       ctx.beginPath();
       ctx.arc(this.posX,this.posY,this.size+10,0,2*Math.PI);
-      ctx.fill();
     }
 
     ctx.lineWidth = 1;
