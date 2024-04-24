@@ -23,7 +23,7 @@ export default class Game{
     this.playerId = playerId;
     this.config = config;
 
-    this.map = new Map(config);
+    this.map = new Map(this.config);
   }
 
   join(sessionId){
@@ -50,7 +50,7 @@ export default class Game{
         unit.posY = posY;
       });
 
-      this.render.setUnits("unit",data.units,"blue",config.unit.searchRange);
+      this.render.setUnits("unit",data.units,"blue",this.config.unit.searchRange);
     }else if(data.type === Event.TeamUnitPosition){
       data.units.forEach(unit=>{
         const { posX, posY } = this.map.toClient(unit);
@@ -59,7 +59,7 @@ export default class Game{
         unit.posY = posY;
       });
 
-      this.render.setUnits("teamUnit",data.units,"green",config.unit.searchRange);
+      this.render.setUnits("teamUnit",data.units,"green",this.config.unit.searchRange);
     }else if(data.type === Event.EnemyUnitPosition){
       data.units.forEach(unit=>{
         const { posX, posY } = this.map.toClient(unit);
@@ -68,7 +68,7 @@ export default class Game{
         unit.posY = posY;
       });
 
-      this.render.setUnits("enemyUnit",data.units,"red",config.unit.searchRange);
+      this.render.setUnits("enemyUnit",data.units,"red",this.config.unit.searchRange);
     }else if(data.type === Event.BulletPosition){
       data.bullets.forEach(bullet=>{
         const { posX, posY } = this.map.toClient(bullet);
