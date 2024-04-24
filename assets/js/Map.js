@@ -11,11 +11,11 @@ export default class Map{
   }
 
   forward(){
-    this.posY += config.speed;
+    this.posY -= config.speed;
   }
 
   backward(){
-    this.posY -= config.speed;
+    this.posY += config.speed;
   }
 
   right(){

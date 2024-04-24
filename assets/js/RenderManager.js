@@ -36,6 +36,8 @@ export default class RenderManager{
         part.draw(this.ctx);
       });
 
+    console.log(this.parts)
+
     this.ctx.restore();
   }
 
