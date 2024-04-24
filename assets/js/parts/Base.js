@@ -17,6 +17,10 @@ export default class Base{
     return this;
   }
 
+  /**
+   * 名前を設定
+   * @param {String} name ID
+   */
   setName(name){
     this.name = name;
 

@@ -90,6 +90,20 @@ export default class RenderManager{
   }
 
   /**
+   * 描画角度を追加
+   * @param {Number} angle 角度
+   */
+  addRotate(angle){
+    this.rotate += angle;
+
+    if(this.rotate >= 360){
+      this.rotate %= 360;
+    }else if(this.rotate < 0){
+      this.rotate += 360;
+    }
+  }
+
+  /**
    * 初期化
    */
   clear(){

@@ -45,7 +45,7 @@ export default class Unit extends Base{
   setHp(hp){
     this.hp = hp;
 
-    return hp;
+    return this;
   }
 
   draw(ctx){
