@@ -77,17 +77,19 @@ export default class Client{
       }
     }else if(this.status === Status.Playing){
       if(event.code === Key.Forward){
-
+        this.game.map.forward();
       }else if(event.code === Key.Backward){
-
+        this.game.map.backward();
       }else if(event.code === Key.Right){
-
+        this.game.map.right();
       }else if(event.code === Key.Left){
-
+        this.game.map.left();
       }else if(event.code === Key.RightRoll){
-
+        this.game.map.addRotate(90);
+        this.render.addRotate(90);
       }else if(event.code === Key.LeftRoll){
-
+        this.game.map.addRotate(-90);
+        this.render.addRotate(-90);
       }else if(event.code === Key.Attack){
         const { posX, posY } = this.game.map.toServer(lib.getMousePos(event));
 
