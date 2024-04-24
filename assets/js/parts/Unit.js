@@ -48,7 +48,7 @@ export default class Unit extends Base{
     return hp;
   }
 
-  draw(){
+  draw(ctx){
     ctx.strokeStyle = this.color;
     ctx.fillStyle = this.color;
 

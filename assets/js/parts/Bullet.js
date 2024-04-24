@@ -17,7 +17,7 @@ export default class Bullet extends Base{
     return this;
   }
 
-  draw(){
+  draw(ctx){
     ctx.strokeStyle = "yellow";
     ctx.fillStyle = "yellow";
     ctx.lineWidth = 1;

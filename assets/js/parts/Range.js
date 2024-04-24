@@ -15,7 +15,7 @@ export default class Range extends Base{
     return this;
   }
 
-  draw(){
+  draw(ctx){
     ctx.strokeStyle = "white";
     ctx.fillStyle = "white";
     ctx.lineWidth = 1;
