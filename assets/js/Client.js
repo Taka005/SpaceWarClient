@@ -89,7 +89,7 @@ export default class Client{
       }else if(event.code === Key.LeftRoll){
 
       }else if(event.code === Key.Attack){
-        const { posX, posY } = lib.getMousePos(event);
+        const { posX, posY } = this.game.map.toServer(lib.getMousePos(event));
 
         this.ws.send({
           type: Event.Attack,
@@ -97,7 +97,7 @@ export default class Client{
           posY: posY
         });
       }else if(event.code === Key.Move){
-        const { posX, posY } = lib.getMousePos(event);
+        const { posX, posY } = this.game.map.toServer(lib.getMousePos(event));
 
         this.ws.send({
           type: Event.TargetPosition,
@@ -132,8 +132,8 @@ export default class Client{
 
         this.ws.send({
           type: Event.ControlUnit,
-          start: this.mouse.start,
-          end: this.mouse.end
+          start: this.game.map.toServer(this.mouse.start),
+          end: this.game.map.toServer(this.mouse.end)
         });
       }
     }

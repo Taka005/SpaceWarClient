@@ -8,17 +8,17 @@ export default class Map{
     this.rotate = 0;
   }
 
-  calcPos({ posX, posY }){
-    posX = posX - this.posX;
-    posY = posY - this.posY;
-
-
-  }
-
-  toClientPos(posX,posY){
+  toClient({ posX, posY }){
     return {
       posX: posX - this.posX,
       posY: posY - this.posY
+    }
+  }
+
+  toServer({ posX, posY }){
+    return {
+      posX: posX + this.posX,
+      posY: posY + this.posY
     }
   }
 }

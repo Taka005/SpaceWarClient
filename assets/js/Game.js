@@ -44,7 +44,7 @@ export default class Game{
   event(data){
     if(data.type === Event.UnitPosition){
       data.units.forEach(unit=>{
-        const { posX, posY } = this.map.toClientPos(unit.posX,unit.posY);
+        const { posX, posY } = this.map.toClient(unit);
 
         unit.posX = posX;
         unit.posY = posY;
@@ -53,7 +53,7 @@ export default class Game{
       this.render.setUnits("unit",data.units,"blue",config.unit.searchRange);
     }else if(data.type === Event.TeamUnitPosition){
       data.units.forEach(unit=>{
-        const { posX, posY } = this.map.toClientPos(unit.posX,unit.posY);
+        const { posX, posY } = this.map.toClient(unit);
 
         unit.posX = posX;
         unit.posY = posY;
@@ -62,7 +62,7 @@ export default class Game{
       this.render.setUnits("teamUnit",data.units,"green",config.unit.searchRange);
     }else if(data.type === Event.EnemyUnitPosition){
       data.units.forEach(unit=>{
-        const { posX, posY } = this.map.toClientPos(unit.posX,unit.posY);
+        const { posX, posY } = this.map.toClient(unit);
 
         unit.posX = posX;
         unit.posY = posY;
@@ -71,7 +71,7 @@ export default class Game{
       this.render.setUnits("enemyUnit",data.units,"red",config.unit.searchRange);
     }else if(data.type === Event.BulletPosition){
       data.bullets.forEach(bullet=>{
-        const { posX, posY } = this.map.toClientPos(bullet.posX,bullet.posY);
+        const { posX, posY } = this.map.toClient(bullet);
 
         bullet.posX = posX;
         bullet.posY = posY;
