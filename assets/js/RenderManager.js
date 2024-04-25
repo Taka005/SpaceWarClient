@@ -108,15 +108,14 @@ export default class RenderManager{
    * @param {Boolean} force 強制するかどうか
    */
   clear(force = false){
-    if(!force){
-      Object.keys(this.elements).forEach(name=>{
-        if(!this.get(name).isChange) return;
+    Object.keys(this.elements).forEach(name=>{
+      if(!this.get(name).isChange) return;
 
-        this.remove(name);
-      });
-    }else{
-      this.elements = {};
-      this.parts = [];
+      this.remove(name);
+    });
+
+    if(force){
+      this.parts = []
     }
   }
 }
