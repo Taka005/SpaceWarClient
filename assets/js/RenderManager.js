@@ -95,7 +95,7 @@ export default class RenderManager{
    */
   addRotate(angle){
     this.rotate += angle;
-
+    console.log(angle,this.rotate)
     if(this.rotate >= 360){
       this.rotate %= 360;
     }else if(this.rotate < 0){
