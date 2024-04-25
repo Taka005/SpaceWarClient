@@ -1,6 +1,7 @@
 import Client from "./Client.js";
 
 const canvas = document.getElementById("game");
+canvas.focus();
 
 const client = new Client(canvas);
 

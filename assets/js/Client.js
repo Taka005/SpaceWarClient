@@ -131,7 +131,7 @@ export default class Client{
     }else if(this.status === Status.Playing){
       if(event.code === Key.Control){
         this.mouse.up(event);
-        console.log(this.mouse,lib.getMousePos(event))
+
         this.ws.send({
           type: Event.ControlUnit,
           start: this.game.map.toServer(this.mouse.start),
