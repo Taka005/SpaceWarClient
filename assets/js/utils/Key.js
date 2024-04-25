@@ -5,7 +5,7 @@ export default {
   "Right": "KeyD",
   "Left": "KeyA",
   "RightRoll": "KeyE",
-  "LeftRoll": "KeyA",
+  "LeftRoll": "KeyQ",
   "Move": "KeyF",
   "Control": "KeyC",
   "Separate": "KeyR",
