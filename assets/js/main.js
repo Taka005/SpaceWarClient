@@ -4,13 +4,13 @@ const canvas = document.getElementById("game");
 
 const client = new Client(canvas);
 
-document.addEventListener("keydown",(event)=>{
+canvas.addEventListener("keydown",(event)=>{
   event.preventDefault();
 
   client.keyDown(event);
 });
 
-document.addEventListener("keyup",(event)=>{
+canvas.addEventListener("keyup",(event)=>{
   event.preventDefault();
 
   client.keyUp(event);
