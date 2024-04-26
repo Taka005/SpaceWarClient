@@ -12,6 +12,7 @@ export default class Mouse{
 
   move(event){
     this.point = lib.getMousePos(event,this.canvas);
+    console.log(this.point)
   }
 
   down(){
