@@ -144,6 +144,6 @@ export default class Client{
   }
 
   mouseMove(event){
-    this.mouse.move(event);
+    this.mouse.update(event);
   }
 }
