@@ -4,7 +4,10 @@ export default class Mouse{
   constructor(canvas){
     this.canvas = canvas;
 
-    this.point = null;
+    this.point = {
+      posX: 0,
+      posY: 0
+    }
 
     this.start = null;
     this.end = null;
@@ -12,7 +15,6 @@ export default class Mouse{
 
   move(event){
     this.point = lib.getMousePos(event,this.canvas);
-    console.log(this.point)
   }
 
   down(){
