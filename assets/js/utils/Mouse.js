@@ -1,5 +1,3 @@
-import lib from "./lib.js";
-
 export default class Mouse{
   constructor(canvas){
     this.canvas = canvas;
@@ -16,7 +14,12 @@ export default class Mouse{
   }
 
   update(event){
-    this.point = lib.getMousePos(event,this.canvas);
+    const rect = canvas.getBoundingClientRect();
+
+    this.point = {
+      posX: event.clientX - rect.x,
+      posY: event.clientY - rect.y,
+    }
   }
 
   down(){

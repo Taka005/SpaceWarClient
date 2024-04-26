@@ -6,7 +6,6 @@ import Event from "./utils/Event.js";
 import Status from "./utils/Status.js";
 import Key from "./utils/Key.js";
 import Mouse from "./utils/Mouse.js";
-import lib from "./utils/lib.js";
 
 export default class Client{
   constructor(canvas){
