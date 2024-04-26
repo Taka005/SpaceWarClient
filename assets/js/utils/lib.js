@@ -1,6 +1,6 @@
 export default {
-  getMousePos:(event)=>{
-    const rect = event.target.getBoundingClientRect();
+  getMousePos:(event,canvas)=>{
+    const rect = canvas.getBoundingClientRect();
 
     return {
       posX: event.clientX - rect.left,

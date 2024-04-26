@@ -10,11 +10,13 @@ import lib from "./utils/lib.js";
 
 export default class Client{
   constructor(canvas){
+    this.canvas = canvas;
+
     this.render = new Render(canvas);
     this.game = new Game(this,this.render);
     this.ws = new WebSocketManager(this.game,this);
 
-    this.mouse = new Mouse();
+    this.mouse = new Mouse(canvas);
 
     this.setStatus(Status.Waiting);
 
@@ -91,7 +93,7 @@ export default class Client{
         this.game.map.addRotate(-90);
         this.render.addRotate(-90);
       }else if(event.code === Key.Attack){
-        const { posX, posY } = this.game.map.toServer(lib.getMousePos(event));
+        const { posX, posY } = this.game.map.toServer(lib.getMousePos(event,this.canvas));
 
         this.ws.send({
           type: Event.Attack,
@@ -99,7 +101,7 @@ export default class Client{
           posY: posY
         });
       }else if(event.code === Key.Move){
-        const { posX, posY } = this.game.map.toServer(lib.getMousePos(event));
+        const { posX, posY } = this.game.map.toServer(lib.getMousePos(event,this.canvas));
 
         this.ws.send({
           type: Event.TargetPosition,
@@ -131,7 +133,7 @@ export default class Client{
     }else if(this.status === Status.Playing){
       if(event.code === Key.Control){
         this.mouse.up(event);
-
+        console.log(this.mouse)
         this.ws.send({
           type: Event.ControlUnit,
           start: this.game.map.toServer(this.mouse.start),
