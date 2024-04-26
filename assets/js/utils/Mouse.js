@@ -14,7 +14,7 @@ export default class Mouse{
   }
 
   update(event){
-    const rect = canvas.getBoundingClientRect();
+    const rect = this.canvas.getBoundingClientRect();
 
     this.point = {
       posX: event.clientX - rect.x,
