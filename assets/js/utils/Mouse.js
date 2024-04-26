@@ -4,25 +4,21 @@ export default class Mouse{
   constructor(canvas){
     this.canvas = canvas;
 
+    this.point = null;
+
     this.start = null;
     this.end = null;
   }
 
-  down(event){
-    const { posX, posY } = lib.getMousePos(event,this.canvas);
-
-    this.start = {
-      posX: posX,
-      posY: posY
-    }
+  move(event){
+    this.point = lib.getMousePos(event,this.canvas);
   }
 
-  up(event){
-    const { posX, posY } = lib.getMousePos(event,this.canvas);
+  down(){
+    this.start = this.point;
+  }
 
-    this.end = {
-      posX: posX,
-      posY: posY
-    }
+  up(){
+    this.end = this.point;
   }
 }

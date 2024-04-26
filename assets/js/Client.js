@@ -93,7 +93,7 @@ export default class Client{
         this.game.map.addRotate(-90);
         this.render.addRotate(-90);
       }else if(event.code === Key.Attack){
-        const { posX, posY } = this.game.map.toServer(lib.getMousePos(event,this.canvas));
+        const { posX, posY } = this.game.map.toServer(this.mouse.point);
 
         this.ws.send({
           type: Event.Attack,
@@ -101,7 +101,7 @@ export default class Client{
           posY: posY
         });
       }else if(event.code === Key.Move){
-        const { posX, posY } = this.game.map.toServer(lib.getMousePos(event,this.canvas));
+        const { posX, posY } = this.game.map.toServer(this.mouse.point);
 
         this.ws.send({
           type: Event.TargetPosition,
@@ -132,8 +132,8 @@ export default class Client{
         .setDisplay(false);
     }else if(this.status === Status.Playing){
       if(event.code === Key.Control){
-        this.mouse.up(event);
-        console.log(this.mouse)
+        this.mouse.up();
+
         this.ws.send({
           type: Event.ControlUnit,
           start: this.game.map.toServer(this.mouse.start),
@@ -141,5 +141,9 @@ export default class Client{
         });
       }
     }
+  }
+
+  mouseMove(event){
+    this.mouse.move(event);
   }
 }

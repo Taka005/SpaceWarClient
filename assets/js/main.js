@@ -15,3 +15,9 @@ document.addEventListener("keyup",(event)=>{
 
   client.keyUp(event);
 });
+
+document.addEventListener("mousemove",(event)=>{
+  event.preventDefault();
+
+  client.mouseMove(event);
+});
