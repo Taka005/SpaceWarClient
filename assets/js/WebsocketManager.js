@@ -45,8 +45,6 @@ export default class WebSocketManager{
       const data = parse(event.data.toString());
       if(!data) return;
 
-      console.log(`WebSocket Data: ${JSON.stringify(data)}`);
-
       if(data.type === Event.ConnectionReady){
         this.ready = true;
 
